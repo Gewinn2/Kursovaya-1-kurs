@@ -11,7 +11,7 @@ void menu() {
 
     int choice;
     while (true) {
-        cout << "МЕНЮ" << endl;
+        cout << "МЕНЮ" << endl << endl;
         cout << "1. Решение квадратного уравнения" << endl;
         cout << "2. Типы квадратных уравнений" << endl;
         cout << "3. Завершение работы" << endl;
@@ -34,6 +34,7 @@ void menu() {
         case 2:
             clearConsole();
             printType();
+            clearConsole();
             break;
         case 3:
             clearConsole();
