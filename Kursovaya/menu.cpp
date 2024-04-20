@@ -29,11 +29,11 @@ void menu() {
         switch (choice) {
         case 1:
             clearConsole();
-            cout << "1" << endl;
+            // Функция для решения уравнений
             break;
         case 2:
             clearConsole();
-            cout << "2" << endl;
+            printType();
             break;
         case 3:
             clearConsole();

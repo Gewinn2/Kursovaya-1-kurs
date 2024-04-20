@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Kursovaya.cpp" />
     <ClCompile Include="menu.cpp" />
+    <ClCompile Include="typeEq.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
