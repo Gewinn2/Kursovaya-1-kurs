@@ -18,8 +18,11 @@ void menu() {
         cout << "Введите номер пункта: ";
         cin >> choice;
 
-        if (isalpha(choice)) {
-            cout << "Вы должны ввести целое число!" << endl;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            clearConsole();
+            cout << "Введите целое число" << endl;
             continue;
         }
 
@@ -35,6 +38,7 @@ void menu() {
         case 3:
             clearConsole();
             cout << "Завершение работы..." << endl;
+            return;
         default:
             clearConsole();
             cout << "Такого пункта меню нет. Введите корректный номер." << endl;
