@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
-#include "equation.h"
 #include <cmath>
 #include <iomanip>
+#include "equation.h"
 
 class Type3 : public Equation {
 public:
@@ -23,5 +23,6 @@ public:
 			std::cout << "x1 = " << std::setprecision(2) << x1 << std::endl;
 			std::cout << "x2 = " << std::setprecision(2) << x2 << std::endl;
 		}
+		std::cout << std::endl;
 	}
 };
