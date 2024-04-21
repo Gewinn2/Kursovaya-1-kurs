@@ -22,14 +22,15 @@ void menu() {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             clearConsole();
-            cout << "Введите целое число" << endl;
+            cout << "Некорректное значение. Введите целое число." << endl;
             continue;
         }
 
         switch (choice) {
         case 1:
             clearConsole();
-            // Функция для решения уравнений
+            solver();
+            clearConsole();
             break;
         case 2:
             clearConsole();
