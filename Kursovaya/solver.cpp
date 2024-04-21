@@ -56,9 +56,33 @@ void solver() {
         }
     }
 
-    drawGraph(a, b, c);
+    while (true) {
+        int choice;
+        cout << "Показать график функции?" << endl;
+        cout << "1. Да" << endl;
+        cout << "2. Нет" << endl;
+        cout << "Введите цифру:";
+        cin >> choice;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Некорректное значение. Введите целое число." << endl;
+            continue;
+        }
 
-    cout << a << " " << b << " " << c << endl;
+        switch (choice) {
+        case 1:
+            cout << "Для того, чтобы выйти нажмите крестик на окне графика функции" << endl;
+            drawGraph(a, b, c);
+            break;
+        case 2:
+            break;
+        default:
+            cout << "Такого пункта меню нет. Введите корректный номер." << endl;
+            continue;
+        }
+        break;
+    }
 
     cout << "Для возврата к меню нажмите любую клавишу ";
     _getch();

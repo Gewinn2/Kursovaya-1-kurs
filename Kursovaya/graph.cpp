@@ -41,14 +41,6 @@ void drawGraph(double a, double b, double c) {
 		}
 	}
 
-	Font font;
-	font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
-
-	Text text;
-	text.setFont(font);
-	text.setCharacterSize(12);
-	text.setFillColor(Color::Black);
-
 	RectangleShape OsX(Vector2f(W, 1));
 	OsX.setFillColor(Color::Black);
 	OsX.setPosition(0, y0);
@@ -102,14 +94,6 @@ void drawGraph(double a, double b, double c) {
 
 			float x1 = x0 + x * s;
 			float y1 = y0 - y * s;
-
-			text.setString(std::to_string(int(x))); // Отображаем целое число
-			text.setPosition(x1 + 2, y0 + 2); // Смещение для лучшего отображения
-			window.draw(text);
-
-			text.setString(std::to_string(int(y))); // Отображаем целое число
-			text.setPosition(x0 + 2, y1 + 2); // Смещение для лучшего отображения
-			window.draw(text);
 
 			point.setPosition(x1-1, y1-1);
 			window.draw(point);
