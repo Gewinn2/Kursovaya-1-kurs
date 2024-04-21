@@ -1,5 +1,5 @@
 #include <iostream>
-#include "header.h"
+#include "function.h"
 #include <cctype>
 using namespace std;
 

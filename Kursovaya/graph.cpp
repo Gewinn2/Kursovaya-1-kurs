@@ -1,16 +1,16 @@
 #include <cmath>
 #include <SFML/Graphics.hpp>
-#include "header.h"
+#include "function.h"
 
 using namespace sf;
 
 void drawGraph(double a, double b, double c) {
-	int W = 600;
-	int H = 600;
-	int x0 = W / 2;
-	int y0 = H / 2;
+	int w = 600;
+	int h = 600;
+	int x0 = w / 2;
+	int y0 = h / 2;
 
-	RenderWindow window(VideoMode(W, H), "Function graph!");
+	RenderWindow window(VideoMode(w, h), "Function graph!");
 
 	CircleShape point(2.f);
 	point.setFillColor(Color::Red);
@@ -20,6 +20,8 @@ void drawGraph(double a, double b, double c) {
 	float t = 100;
 	int m = ((l) * (-1) + r) * t + 1;
 	int s = 30;
+
+	// "C:\Users\danii\source\repos\arial_black.ttf"
 
 	RectangleShape line[40];
 	for (int i = 0; i < 40; i++) {
@@ -41,11 +43,11 @@ void drawGraph(double a, double b, double c) {
 		}
 	}
 
-	RectangleShape OsX(Vector2f(W, 1));
+	RectangleShape OsX(Vector2f(w, 1));
 	OsX.setFillColor(Color::Black);
 	OsX.setPosition(0, y0);
 
-	RectangleShape OsY(Vector2f(1, H));
+	RectangleShape OsY(Vector2f(1, h));
 	OsY.setFillColor(Color::Black);
 	OsY.setPosition(x0, 0);
 
@@ -57,7 +59,7 @@ void drawGraph(double a, double b, double c) {
 		if (i < 2)
 			strel[i].setPosition(x0, 0);
 		else
-			strel[i].setPosition(W, y0);
+			strel[i].setPosition(w, y0);
 	}
 	strel[0].setRotation(25);
 	strel[1].setRotation(-25);

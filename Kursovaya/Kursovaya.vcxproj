@@ -141,7 +141,12 @@
     <ClCompile Include="typeEq.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header.h" />
+    <ClInclude Include="equation.h" />
+    <ClInclude Include="function.h" />
+    <ClInclude Include="Type1.h" />
+    <ClInclude Include="Type2.h" />
+    <ClInclude Include="Type3.h" />
+    <ClInclude Include="Type4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
