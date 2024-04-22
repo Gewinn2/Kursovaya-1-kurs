@@ -2,105 +2,166 @@
 #include <SFML/Graphics.hpp>
 #include "function.h"
 
-using namespace sf;
-
 void drawGraph(double a, double b, double c) {
-	int w = 600;
-	int h = 600;
-	int x0 = w / 2;
-	int y0 = h / 2;
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Graph with Marks");
+    sf::VertexArray graph(sf::LinesStrip, 800);
 
-	RenderWindow window(VideoMode(w, h), "Function graph!");
+    // Создание точек графа (y = x^2)
+    for (int i = 0; i < 800; ++i) {
+        float x = (i - 400.0f) / 20.0f;
+        float y = a * x * x + b * x  + c;
+        graph[i].position = sf::Vector2f(i, 300 - y * 20.0f);
+        graph[i].color = sf::Color::Red;
+    }
 
-	CircleShape point(2.f);
-	point.setFillColor(Color::Red);
+    // Создание осей X и Y
+    sf::VertexArray xAxis(sf::Lines, 2);
+    xAxis[0].position = sf::Vector2f(0, 300);
+    xAxis[1].position = sf::Vector2f(800, 300);
+    xAxis[0].color = sf::Color::Black;
+    xAxis[1].color = sf::Color::Black;
 
-	int l = -10;
-	int r = 10;
-	float t = 100;
-	int m = ((l) * (-1) + r) * t + 1;
-	int s = 30;
+    sf::VertexArray yAxis(sf::Lines, 2);
+    yAxis[0].position = sf::Vector2f(400, 0);
+    yAxis[1].position = sf::Vector2f(400, 600);
+    yAxis[0].color = sf::Color::Black;
+    yAxis[1].color = sf::Color::Black;
 
-	// "C:\Users\danii\source\repos\arial_black.ttf"
+    // Создание отметок на осях с расстоянием от начала координат
+    std::vector<sf::VertexArray> marks;
+    for (int i = -19; i <= 19; ++i) {
+        if (i != 0) {
+            // Отметки на оси X
+            sf::VertexArray markX(sf::Lines, 2);
+            markX[0].position = sf::Vector2f(400 + i * 20, 295);
+            markX[1].position = sf::Vector2f(400 + i * 20, 305);
+            markX[0].color = sf::Color::Black;
+            markX[1].color = sf::Color::Black;
+            marks.push_back(markX);
 
-	RectangleShape line[40];
-	for (int i = 0; i < 40; i++) {
-		line[i].setSize(Vector2f(1, 20));
-		line[i].setFillColor(Color::Black);
+            // Отметки на оси Y
+            sf::VertexArray markY(sf::Lines, 2);
+            markY[0].position = sf::Vector2f(395, 300 + i * 20);
+            markY[1].position = sf::Vector2f(405, 300 + i * 20);
+            markY[0].color = sf::Color::Black;
+            markY[1].color = sf::Color::Black;
+            marks.push_back(markY);
+        }
+    }
 
-		if (i < 20) {
-			if (i < 10)
-				line[i].setPosition(x0 - (i + 1) * s, y0 - 10);
-			else
-				line[i].setPosition(x0 + (i - 9) * s, y0 - 10);
-		}
-		else {
-			line[i].setRotation(90);
-			if (i < 30)
-				line[i].setPosition(x0 + 10, y0 + (i - 30) * s);
-			else
-				line[i].setPosition(x0 + 10, y0 + (i - 29) * s);
-		}
-	}
+    // Добавление стрелок на концах осей
+    sf::VertexArray arrowX(sf::Lines, 2);
+    arrowX[0].position = sf::Vector2f(795, 295);
+    arrowX[1].position = sf::Vector2f(800, 300);
+    arrowX[0].color = sf::Color::Black;
+    arrowX[1].color = sf::Color::Black;
 
-	RectangleShape OsX(Vector2f(w, 1));
-	OsX.setFillColor(Color::Black);
-	OsX.setPosition(0, y0);
+    sf::VertexArray arrowX2(sf::Lines, 2);
+    arrowX2[0].position = sf::Vector2f(795, 305); // Изменили позицию стрелки X
+    arrowX2[1].position = sf::Vector2f(800, 300);
+    arrowX2[0].color = sf::Color::Black;
+    arrowX2[1].color = sf::Color::Black;
 
-	RectangleShape OsY(Vector2f(1, h));
-	OsY.setFillColor(Color::Black);
-	OsY.setPosition(x0, 0);
+    sf::VertexArray arrowY(sf::Lines, 2);
+    arrowY[0].position = sf::Vector2f(395, 5);
+    arrowY[1].position = sf::Vector2f(400, 0);
+    arrowY[0].color = sf::Color::Black;
+    arrowY[1].color = sf::Color::Black;
 
-	RectangleShape strel[4];
-	for (int i = 0; i < 4; i++) {
-		strel[i].setSize(Vector2f(1, 25));
-		strel[i].setFillColor(Color::Black);
+    sf::VertexArray arrowY2(sf::Lines, 2);
+    arrowY2[0].position = sf::Vector2f(405, 5); // Изменили позицию стрелки Y
+    arrowY2[1].position = sf::Vector2f(400, 0);
+    arrowY2[0].color = sf::Color::Black;
+    arrowY2[1].color = sf::Color::Black;
 
-		if (i < 2)
-			strel[i].setPosition(x0, 0);
-		else
-			strel[i].setPosition(w, y0);
-	}
-	strel[0].setRotation(25);
-	strel[1].setRotation(-25);
-	strel[2].setRotation(60);
-	strel[3].setRotation(-250);
 
-	int animation = 0;
+    // Загрузка шрифта для текста
+    sf::Font font;
+    font.loadFromFile("C:/Users/danii/source/repos/ofont.ru_Time Roman.ttf");
 
-	while (window.isOpen())
-	{
-		Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == Event::Closed)
-				window.close();
-		}
+    // Создание текстовых меток для числовых обозначений
+    std::vector<sf::Text> labels;
+    for (int i = -19; i <= 19; ++i) {
+        if (i != 0) { // Пропускаем ноль, так как он уже обозначен осью
+            sf::Text label(std::to_string(i), font, 15);
+            if (i < 0) {
+                label.setPosition(397 + i * 20.0f - 5, 275); // Позиция над осью X для отрицательных значений
+            }
+            else {
+                label.setPosition(400 + i * 20.0f - 5, 310); // Позиция под осью X для положительных значений
+            }
+            label.setFillColor(sf::Color::Black);
+            labels.push_back(label);
+        }
+    }
 
-		if (animation < m)
-			animation += 5;
+    std::vector<sf::Text> labels2;
+    for (int i = -14; i <= 14; ++i) {
+        if (i != 0) { // Пропускаем ноль, так как он уже обозначен осью
+            sf::Text label2(std::to_string(-i), font, 15);
+            if (i < 0) {
+                label2.setPosition(410, 295 + i * 20.0f - 5);
+            }
+            else {
+                label2.setPosition(370, 295 + i * 20.0f - 5);
+            }
+            label2.setFillColor(sf::Color::Black);
+            labels2.push_back(label2);
+        }
+    }
 
-		window.clear(Color::White);
-		window.draw(OsX);
-		window.draw(OsY);
-		for (int i = 0; i < 4; i++)
-			window.draw(strel[i]);
+    // Создание x и y у концов координатных осей
+    std::vector<sf::Text> xSign;
+    sf::Text xSign2("X", font, 15);
+    xSign2.setPosition(790, 310);
+    xSign2.setFillColor(sf::Color::Black);
+    xSign.push_back(xSign2);
 
-		for (int i = 0; i < 40; i++)
-			if (i != 19 && i != 20)
-				window.draw(line[i]);
+    std::vector<sf::Text> ySign;
+    sf::Text ySign2("Y", font, 15);
+    ySign2.setPosition(410, -5);
+    ySign2.setFillColor(sf::Color::Black);
+    ySign.push_back(ySign2);
 
-		for (int i = 0; i < animation; i++) {
-			float x = l + i / t;
-			float y = a * x * x + b * x + c;
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
 
-			float x1 = x0 + x * s;
-			float y1 = y0 - y * s;
+        window.clear(sf::Color::White);
+        window.draw(graph);
+        window.draw(xAxis);
+        window.draw(yAxis);
 
-			point.setPosition(x1-1, y1-1);
-			window.draw(point);
-		}
-		window.display();
-	}
+        // Отрисовка отметок на осях
+        for (const auto& mark : marks) {
+            window.draw(mark);
+        }
+
+        for (const auto& label : labels) {
+            window.draw(label);
+        }
+
+        for (const auto& label2 : labels2) {
+            window.draw(label2);
+        }
+
+        for (const auto& ySign2 : ySign) {
+            window.draw(ySign2);
+        }
+
+        for (const auto& xSign2 : xSign) {
+            window.draw(xSign2);
+        }
+
+        window.draw(arrowX);
+        window.draw(arrowX2);
+        window.draw(arrowY);
+        window.draw(arrowY2);
+
+        window.display();
+    }
 	return;
 }

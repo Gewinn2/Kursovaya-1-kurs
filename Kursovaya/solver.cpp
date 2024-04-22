@@ -46,9 +46,9 @@ void showGraph(double a, double b, double c) {
 
 // Функция для решения квадратного уравнения и отображения графика
 void solver() {
-    cout << "--------------------------------------" << endl;
-    cout << "     РЕШЕНИЕ КВАДРАТНОГО УРАВНЕНИЯ    " << endl;
-    cout << "--------------------------------------" << endl << endl;
+    cout << " --------------------------------------" << endl;
+    cout << "|     РЕШЕНИЕ КВАДРАТНОГО УРАВНЕНИЯ    |" << endl;
+    cout << " --------------------------------------" << endl << endl;
 
     double a, b, c;
 
@@ -112,78 +112,146 @@ void solver() {
         }
         else if (a != 0 && b != 0 && c != 0) {
             if (a == 1) {
-                cout << "x^2 + ";
+                cout << "x^2 ";
+            }
+            else if (a == -1){
+                cout << "-x^2 ";
             }
             else {
-                cout << a << "x^2 + ";
+                cout << a << "x^2 ";
             }
             if (b == 1) {
-                cout << "x + " << c << " = 0" << endl;
+                cout << "+ x ";
+            }
+            else if (b == -1) {
+                cout << "- x ";
             }
             else {
-                cout << b << "x + " << c << " = 0" << endl;
+                if (b > 0) {
+                    cout << b << "x ";
+                }
+                else {
+                    cout << "- " << abs(b) << "x ";
+                }
             }
+            if (c > 0) {
+                cout << "+ " << c;
+            }
+            else {
+                cout << "- " << abs(c);
+            }
+            cout << " = 0" << endl;
             Type3 type3(a, b, c);
             type3.solveEq();
             showGraph(a, b, c);
         }
         else if (a != 0 && b != 0 && c == 0) {
             if (a == 1) {
-                cout << "x^2 + ";
+                cout << "x^2 ";
+            }
+            else if (a == -1) {
+                cout << "-x^2 ";
             }
             else {
-                cout << a << "x^2 + ";
+                cout << a << "x^2 ";
             }
             if (b == 1) {
-                cout << "x = 0" << endl;
+                cout << "+ x ";
+            }
+            else if (b == -1) {
+                cout << "- x ";
             }
             else {
-                cout << b << "x = 0" << endl;
+                if (b > 0) {
+                    cout << b << "x ";
+                }
+                else {
+                    cout << "- " << abs(b) << "x ";
+                }
             }
+            cout << "= 0" << endl;
             Type4 type4(a, b, c);
             type4.solveEq();
             showGraph(a, b, c);
         }
         else if (a != 0 && b == 0 && c != 0) {
             if (a == 1) {
-                cout << "x^2 + " << c << " = 0" << endl;
+                cout << "x^2 ";
+            }
+            else if (a == -1) {
+                cout << "-x^2 ";
             }
             else {
-                cout << a << "x^2 + " << c << " = 0" << endl;
+                cout << a << "x^2 ";
             }
+            if (c > 0) {
+                cout << "+ " << c;
+            }
+            else {
+                cout << "- " << abs(c);
+            }
+            cout << " = 0" << endl;
             Type5 type5(a, b, c);
             type5.solveEq();
             showGraph(a, b, c);
         }
         else if (a != 0 && b == 0 && c == 0) {
             if (a == 1) {
-                cout << "x^2 = 0" << endl;
+                cout << "x^2 ";
+            }
+            else if (a == -1) {
+                cout << "-x^2 ";
             }
             else {
-                cout << a << "x^2 = 0" << endl;
+                cout << a << "x^2 ";
             }
+            cout << "= 0" << endl;
             Type6 type6(a, b, c);
             type6.solveEq();
             showGraph(a, b, c);
         }
         else if (a == 0 && b != 0 && c != 0) {
             if (b == 1) {
-                cout << "x + " << c << " = 0" << endl;
+                cout << "x ";
+            }
+            else if (b == -1) {
+                cout << "-x ";
             }
             else {
-                cout << b << "x + " << c << " = 0" << endl;
+                if (b > 0) {
+                    cout << b << "x ";
+                }
+                else {
+                    cout << "-" << abs(b) << "x ";
+                }
             }
+            if (c > 0) {
+                cout << "+ " << c;
+            }
+            else {
+                cout << "- " << abs(c);
+            }
+            cout << "= 0" << endl;
             Type7 type7(a, b, c);
             type7.solveEq();
             showGraph(a, b, c);
         }
         else if (a == 0 && b != 0 && c == 0) {
             if (b == 1) {
-                cout << "x = 0" << endl;
+                cout << "x ";
+            }
+            else if (b == -1) {
+                cout << "-x ";
             }
             else {
-                cout << b << "x = 0" << endl;
+                if (b > 0) {
+                    cout << b << "x ";
+                }
+                else {
+                    cout << "-" << abs(b) << "x ";
+                }
             }
+            cout << "= 0" << endl;
             Type8 type8(a, b, c);
             type8.solveEq();
             showGraph(a, b, c);
