@@ -139,6 +139,7 @@
     <ClCompile Include="menu.cpp" />
     <ClCompile Include="solver.cpp" />
     <ClCompile Include="typeEq.cpp" />
+    <ClCompile Include="userManual.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="equation.h" />

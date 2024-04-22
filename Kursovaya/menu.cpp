@@ -18,7 +18,8 @@ void menu() {
         cout << " --------------------------------" << endl << endl;
         cout << "1. Решение квадратного уравнения" << endl;
         cout << "2. Типы квадратных уравнений" << endl;
-        cout << "3. Завершение работы" << endl;
+        cout << "3. Инструкция по эксплуатации" << endl;
+        cout << "4. Завершение работы" << endl;
         cout << "Введите номер пункта: ";
         cin >> choice;
 
@@ -44,6 +45,11 @@ void menu() {
             clearConsole();
             break;
         case 3:
+            clearConsole();
+            printManual(); // Функция для отображения инструкции по эксплуатации
+            clearConsole();
+            break;
+        case 4:
             clearConsole();
             cout << "Завершение работы..." << endl;
             return;

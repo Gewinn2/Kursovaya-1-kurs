@@ -1,5 +1,6 @@
 #pragma once
 
+// –одительский класс дл€ квадратных уравнений
 class Equation {
 public:
     double a;

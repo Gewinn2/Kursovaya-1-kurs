@@ -3,10 +3,10 @@
 #include "function.h"
 
 void drawGraph(double a, double b, double c) {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Graph with Marks");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Graph");
     sf::VertexArray graph(sf::LinesStrip, 800);
 
-    // Создание точек графа (y = x^2)
+    // Создание точек графа y = ax^2 + bx + c
     for (int i = 0; i < 800; ++i) {
         float x = (i - 400.0f) / 20.0f;
         float y = a * x * x + b * x  + c;
