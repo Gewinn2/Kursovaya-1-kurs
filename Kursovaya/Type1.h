@@ -2,6 +2,7 @@
 #include <iostream>
 #include "equation.h"
 
+// Уравнение 0 = 0
 class Type1 : public Equation {
 public:
 	Type1(double _a, double _b, double _c) : Equation(_a, _b, _c) {}

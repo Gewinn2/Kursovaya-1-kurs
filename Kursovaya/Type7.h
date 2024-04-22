@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "equation.h"
 
+// Уравнение bx + c = 0
 class Type7 : public Equation {
 public:
 	Type7(double _a, double _b, double _c) : Equation(_a, _b, _c) {}

@@ -3,10 +3,12 @@
 #include <cctype>
 using namespace std;
 
+// Очистка консоли
 void clearConsole() {
     system("cls");
 }
 
+// Отображение меню
 void menu() {
 
     int choice;
@@ -18,6 +20,7 @@ void menu() {
         cout << "Введите номер пункта: ";
         cin >> choice;
 
+        // Обработка ввода пользователя
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -26,15 +29,16 @@ void menu() {
             continue;
         }
 
+        // Вызов пункта меню в зависимости от того, что ввел пользователь
         switch (choice) {
         case 1:
             clearConsole();
-            solver();
+            solver(); // Функция для решения квадратного уравнения
             clearConsole();
             break;
         case 2:
             clearConsole();
-            printType();
+            printType(); // Функция для отображения типов квадратных уравнений
             clearConsole();
             break;
         case 3:

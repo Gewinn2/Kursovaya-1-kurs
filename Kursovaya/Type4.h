@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "equation.h"
 
+// Уравнение ax^2 + bx = 0
 class Type4 : public Equation {
 public:
 	Type4(double _a, double _b, double _c) : Equation(_a, _b, _c) {}
