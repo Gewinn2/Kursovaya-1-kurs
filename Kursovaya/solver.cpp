@@ -63,6 +63,14 @@ void solver() {
             cout << "Некорректное значение a" << endl;
             continue;
         }
+        else if (a > 1000000){
+            cout << "Слишком большое значение a" << endl;
+            continue;
+        }
+        else if (a < -1000000) {
+            cout << "Слишком маленькое значение a" << endl;
+            continue;
+        }
         else {
             break;
         }
@@ -78,6 +86,14 @@ void solver() {
             cout << "Некорректное значение b" << endl;
             continue;
         }
+        else if (b > 1000000) {
+            cout << "Слишком большое значение b" << endl;
+            continue;
+        }
+        else if (b < -1000000) {
+            cout << "Слишком маленькое значение b" << endl;
+            continue;
+        }
         else {
             break;
         }
@@ -91,6 +107,14 @@ void solver() {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Некорректное значение c" << endl;
+            continue;
+        }
+        else if (c > 1000000) {
+            cout << "Слишком большое значение c" << endl;
+            continue;
+        }
+        else if (c < -1000000) {
+            cout << "Слишком маленькое значение c" << endl;
             continue;
         }
         else {
@@ -128,7 +152,7 @@ void solver() {
             }
             else {
                 if (b > 0) {
-                    cout << b << "x ";
+                    cout << "+ " << b << "x ";
                 }
                 else {
                     cout << "- " << abs(b) << "x ";
@@ -163,7 +187,7 @@ void solver() {
             }
             else {
                 if (b > 0) {
-                    cout << b << "x ";
+                    cout << "+ " << b << "x ";
                 }
                 else {
                     cout << "- " << abs(b) << "x ";
